@@ -10,7 +10,7 @@ use Exception;
 class NumberPicker
 {
     /**
-     * Returns a random number
+     * Returns a random number between the given range.
      *
      * @param int $min  Min value of random number.
      * @param int $max  Max value of random number.
