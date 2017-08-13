@@ -14,12 +14,11 @@ appropriate versions of PHP, Symfony, and Composer.
 1. Download the code into the root web directory using the command-line using
 `git clone https://github.com/pgngp/guess-number.git` or by downloading the zip
 from [here](https://github.com/pgngp/guess-number/archive/master.zip) and unpacking it.
-2. Change to the project directory and then run `composer install` to install PhpUnit.
-3. Start the built-in PHP server by running `php bin/console server:start <IP_ADDRESS>:<PORT>`.
-4. In a web browser, go to `<IP_ADDRESS>:<PORT>/guess` to access the game.
-
-### Run Unit Tests
-From the project directory in the command-line, run `php vendor/bin/phpunit tests`.
+2. Change to the project directory and then run `composer install` to install PhpUnit
+and other dependencies.
+3. Run unit tests using `php vendor/bin/phpunit tests`.
+4. Start the built-in PHP server by running `php bin/console server:start <IP_ADDRESS>:<PORT>`.
+5. In a web browser, go to `<IP_ADDRESS>:<PORT>/guess` to access the game.
 
 ### Implementation Details
 The UI is implemented using JavaScript and jQuery in `web/js/guess.js`. When
