@@ -14,4 +14,12 @@ class NumberPickerTest extends TestCase
 		$this->assertGreaterThanOrEqual(1, $number);
 		$this->assertLessThanOrEqual(4, $number);
 	}
+
+	public function testPickNumberDefault()
+	{
+		$numberPicker = new NumberPicker();
+		$number = $numberPicker->pickNumber();
+		$this->assertGreaterThanOrEqual(1, $number);
+		$this->assertLessThanOrEqual(10, $number);
+	}
 }
