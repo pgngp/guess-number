@@ -3,6 +3,7 @@ const MAX_TRIES = 3;
 const MIN = 1;
 const MAX = 10;
 var numTries = 1;
+var dict = {1: 'first', 2: 'second', 3: 'third'};
 
 /**
  * Display the UI form asking the user to guess the random number.
@@ -38,9 +39,9 @@ function getDiffMessage(randNumber, inputVal)
 	
 	if (diff >= 3) {
 		return '(cold)';
-	} else if (diff >= 2) {
+	} else if (diff == 2) {
 		return '(warm)';
-	} else if (diff >= 1) {
+	} else if (diff == 1) {
 		return '(hot)';
 	} else {
 		return '(invalid number)';
@@ -66,7 +67,7 @@ function compareValues(id, randNumber)
 	}
 	
 	// Indicate whether the user entered the correct value or not
-	document.write("<span>Your #" + numTries + " guess is: " + inputVal + " ");
+	document.write("<span>Your " + dict[numTries] + " guess is: " + inputVal + " ");
 	if (inputVal != randNumber) {
 		document.write(getDiffMessage(randNumber, inputVal) + "<br><br>");
 		++numTries;
@@ -80,21 +81,32 @@ function compareValues(id, randNumber)
 	}
 }
 
-// On document ready state, fetch the random number from the PHP code
-// and display the UI.
+/**
+ * On document ready state, fetch the random number from the PHP code
+ * and display the UI.
+ */
 $(document).ready(function() {
-	// Get the random number from the PHP code
-	randNumber = $.ajax({
+	// Get the random number from the PHP code using AJAX
+	var randNumber = null;
+	$.ajax({
         type: "GET",
         url: "../pickNumber.php",
         async: false,
         data: {
         	min: MIN,
         	max: MAX
+        },
+        dataType: "text",
+        success: function(response) {
+        	randNumber = response;
+        },
+        error: function(xhr) {
+        	document.write("Error: AJAX request failed.<br>");
         }
-    }).responseText;
-	//document.write("Random number: " + randNumber + "<br>");
+    });
 	
 	// Display the UI form to ask user to enter a guess
-	displayUI(numTries, randNumber);
+	if (randNumber != null) {
+		displayUI(numTries, randNumber);
+	}
 });
