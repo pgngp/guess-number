@@ -19,9 +19,9 @@ class NumberPicker
     public function pickNumber($min = 1, $max = 10)
     {
         try {
-            $randNumber = rand ( $min, $max );
-        } catch ( Exception $exception ) {
-            throw new Exception ( 'Invalid range.' );
+            $randNumber = rand($min, $max);
+        } catch (Exception $exception) {
+            throw new Exception('Invalid range.');
         }
 
         return $randNumber;
