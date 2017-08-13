@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Guess the number!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+          {% javascripts 
+            'js/jquery-3.2.1.js'
+            'js/guess.js' %}
+            <script src="{{ asset_url }}"></script>
+          {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>
