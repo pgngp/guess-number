@@ -5,6 +5,12 @@ require_once(__DIR__ . '/../src/NumberPicker.php');
 use Exception;
 use GuessNumber\NumberPicker;
 
+/**
+ * This script receives API request from the client to pick a random number. It
+ * calls pickNumber() in NumberPicker class to pick a random number and sends
+ * it back to the client.
+ */
+
 $min = 1;
 $max = 10;
 
