@@ -28,3 +28,4 @@ if ($min > $max) {
 
 $numberPicker = new NumberPicker();
 echo $numberPicker->pickNumber($min, $max);
+

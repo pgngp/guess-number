@@ -91,26 +91,20 @@ function compareValues(id, randNumber)
  */
 $(document).ready(function() {
     // Get the random number from the PHP code using AJAX
-    var randNumber = null;
     $.ajax({
         type : "GET",
-        url : "../pickNumber.php",
-        async : false,
+        url : "/pick",
+        async : true,
         data : {
             min : MIN,
             max : MAX
         },
         dataType : "text",
         success : function(response) {
-            randNumber = response;
+            displayUI(numTries, response);
         },
         error : function(xhr) {
             document.write("Error: AJAX request failed.<br>");
         }
     });
-
-    // Display the UI form to ask user to enter a guess
-    if (randNumber != null) {
-        displayUI(numTries, randNumber);
-    }
 });
